@@ -12,20 +12,20 @@ When Resource.get() return an object from remote, the Date property will be Stri
     var ahbHotelService = angular.module('ahbHotelService',['ngResource']);
     ahbHotelService.factory('Hotel',['$resource',function($resource){
 
-    var AHBHotel = $resource('/api/hotel/:id',{},{
-        query:{method:'GET',params:{id:''},isArray:true}
-    });
-
-    var protoGet = AHBHotel.get;
-    AHBHotel.get = function(params){
-        var result =  protoGet(params);
-        result.$promise.then(function(){
-            result.created = new Date(result.created);
+        var AHBHotel = $resource('/api/hotel/:id',{},{
+            query:{method:'GET',params:{id:''},isArray:true}
         });
-        return result;
-    };
-    return AHBHotel;
-}]);
+
+        var protoGet = AHBHotel.get;
+        AHBHotel.get = function(params){
+            var result =  protoGet(params);
+            result.$promise.then(function(){
+                result.created = new Date(result.created);
+            });
+            return result;
+        };
+        return AHBHotel;
+    }]);
 
 ##watch is shallow
 Oh, it's just a little hint!
