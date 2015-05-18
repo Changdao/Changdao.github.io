@@ -8,11 +8,9 @@ categories: jekyll update
 ##'datefmt' error
 When Resource.get() return an object from remote, the Date property will be String, AngularJS will not automatically transfom it. You could transform it by transformResponse. I provide another solution:
 
-'use strict';
-
-var ahbHotelService = angular.module('ahbHotelService',['ngResource']);
-
-ahbHotelService.factory('Hotel',['$resource',function($resource){
+    'use strict';
+    var ahbHotelService = angular.module('ahbHotelService',['ngResource']);
+    ahbHotelService.factory('Hotel',['$resource',function($resource){
 
     var AHBHotel = $resource('/api/hotel/:id',{},{
         query:{method:'GET',params:{id:''},isArray:true}
