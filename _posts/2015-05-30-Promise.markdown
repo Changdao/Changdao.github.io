@@ -1,13 +1,15 @@
 ---
 layout: post
-title:  "Something About AngularJS"
-date:   2015-05-18 22:29:47
+title:  "Promise code refactoring record"
+date:   2015-05-30 22:29:47
 categories: jekyll update
 ---
 
 
 ##A recode for refactoring promise
+
 <strong>Question:</strong>the second refactoring right?
+
 ###This original code:
             Hotel.findById(_id).then(function(obj){
                  
@@ -25,7 +27,9 @@ categories: jekyll update
                     else
                         res.send('{"code":"401","error":"'+e+'"}');
             });
+
 ###The code refactored:
+
             var foundHotel=null;
             Hotel.findById(_id).then(function(obj){
                 actionDetail = 'Assign from ['+obj.email+'] to ['+req.session.email+']';   
