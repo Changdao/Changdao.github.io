@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "Something About AngularJS"
+date:   2015-05-18 22:29:47
+categories: jekyll update
+---
+
+
 ##A recode for refactoring promise
 <strong>Question:</strong>the second refactoring right?
 ###This original code:
