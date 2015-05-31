@@ -8,9 +8,9 @@ categories: jekyll update
 
 ## As possible as you can, make the web app only one AngularJS APP
   This can contribute moare benefits:
-    1. PageState could rememter
-    2. Less files
-    3. Reusing existing code is easier.
+    *. PageState could rememter
+    *. Less files
+    *. Reusing existing code is easier.
 
 ## REST api utilize the Query
   I mean that you could use such style request:
