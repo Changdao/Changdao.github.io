@@ -6,7 +6,7 @@ categories: jekyll update
 ---
 
 
-## As possible as you can, make the web app only one AngularJS APP
+## Use one AngularJS APP
   That can contribute many benefits:
 
     1. PageState could be rememberred;
