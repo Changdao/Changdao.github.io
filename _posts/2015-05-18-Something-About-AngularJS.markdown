@@ -30,3 +30,14 @@ When Resource.get() return an object from remote, the Date property will be Stri
 ##watch is shallow
 Oh, it's just a little hint!
 
+## id selector was executed automatically
+
+For those elements with id property, a variable named same as the id property's value could be called directly.
+For example:
+<div id="id1"...
+
+app.controller('ctrl',function($scope){
+    id1......
+
+which work! 
+
