@@ -1,21 +1,33 @@
+---
+layout: post
+title:  "jQuery匿名函数事件处理器定位与调试"
+date:   2016-06-11 22:29:47
+categories: jekyll update
+---
+
+jQuery匿名函数事件处理器定位与调试
+==========================
 JavaScript调试的一个大问题就是：event handler的代码如何定位？
 
-比如在实现页面交互时，某个控件的事件处理有一些多余的动作或者不符合预期的的行为，如何知道这些行为是如何发生的？如果自己写全部的代码，没有用其它的框架也好办，但是这在现在的开发团队和过程中很少的。某个页面元素的事件处理代码具体在哪里？在实际调试中如何发现？ 这里介绍一个我实际使用的方法。
-
-
-基于JQuery的事件处理，可以通过断点，然后定位到
+比如在实现页面交互时，某个控件的事件处理有一些多余的动作或者不符合预期的的行为，如何知道这些行为是如何发生的？如果自己写全部的代码，没有用其它的框架也好办，但是这在现在的开发团队和过程中很少的。有时候页面JS在控制台打印出了堆栈，但是你只能看到和jQuery相关，而实际事件处理代码具体在哪里，却完全没有头绪。
+在实践中，我也经常遇到这种情况，处理办法是在Chrome中首先通过断点，然后定位到
+<pre>
 /*jquery.js 1.10.2 */
-5094  ret = ( (jQuery.event.special[ handleObj.origType ] || {}).handle || handleObj.handler )
-                            .apply( matched.elem, args );
+5094  ret = ( (jQuery.event.special[ handleObj.origType ] || {}).handle || handleObj.handler ).apply( matched.elem, args );
+</pre>
 
-然后在console上查看
+然后在控制台上键入下面的代码并回车。
+<pre>
 (jQuery.event.special[ handleObj.origType ] || {}).handle || handleObj.handler
+</pre>
+查看该表达式的值。
 
-
-通常是
+通常，在控制台打印出来的是
+<pre>
 function anonymous(e)
+</pre>
 
-单击anonymous，chrome会定位到对应的JavaScript代码处。
+单击“anonymous”，Chrome就会定位到对应的JavaScript代码处。
 
 
 断点的设置很多时候都要特别设计，要考虑到不同事件的发生关系和处理次序。

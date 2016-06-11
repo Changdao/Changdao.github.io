@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Something About AngularJS"
+title:  "关于AngularJS（编辑中）"
 date:   2015-05-18 22:29:47
 categories: jekyll update
 ---

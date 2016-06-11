@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Try Angular 2"
+title:  "Angular 2试用记录（编辑中）"
 date:   2015-06-09 22:29:47
 categories: jekyll update
 ---
 
-Try Angular 2
+Angular2试用记录
 ==========================
 First touch Angular 2, after seeing many posts from G+.<br>
 Goto the website for Angular 2: angular.io<br>

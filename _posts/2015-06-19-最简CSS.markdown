@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Mark for css"
+title:  "css备忘（编辑中）"
 date:   2015-06-09 22:29:47
 categories: jekyll update
 ---
 
-Mark for CSS
+CSS备忘
 ==========================
 Notice: Please do not fully trust the following record, I'm just recording it, if there are some conflict with others, maybe I'm wrong.
 
