@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>关于</title>
-  <meta name="description" content="老程序员. 热爱编程，享受编程。
-">
+  <title>关于AngularJS（编辑中）</title>
+  <meta name="description" content="‘datefmt’ errorWhen Resource.get() return an object from remote, the Date property will be String, AngularJS will not automatically transfom it. You could tr...">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://changdao.github.io/about/">
+  <link rel="canonical" href="http://changdao.github.io/jekyll/update/2015/05/19/%E5%85%B3%E4%BA%8EAngularJS.html">
   <link rel="alternate" type="application/rss+xml" title="长刀, 一个老程序员." href="http://changdao.github.io/feed.xml" />
 </head>
 
@@ -58,11 +57,48 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">关于</h1>
+    <h1 class="post-title">关于AngularJS（编辑中）</h1>
+    <p class="post-meta">May 19, 2015</p>
   </header>
 
   <article class="post-content">
-    <p>一个老程序员。学过用过很多技术，略有一些心得，现在还在学习。</p>
+    <h2 id="datefmt-error">‘datefmt’ error</h2>
+<p>When Resource.get() return an object from remote, the Date property will be String, AngularJS will not automatically transfom it. You could transform it by transformResponse. I provide another solution:</p>
+
+<pre><code>'use strict';
+var ahbHotelService = angular.module('ahbHotelService',['ngResource']);
+ahbHotelService.factory('Hotel',['$resource',function($resource){
+
+    var AHBHotel = $resource('/api/hotel/:id',{},{
+        query:{method:'GET',params:{id:''},isArray:true}
+    });
+
+    var protoGet = AHBHotel.get;
+    AHBHotel.get = function(params){
+        var result =  protoGet(params);
+        result.$promise.then(function(){
+            result.created = new Date(result.created);
+        });
+        return result;
+    };
+    return AHBHotel;
+}]);
+</code></pre>
+
+<h2 id="watch-is-shallow">watch is shallow</h2>
+<p>Oh, it’s just a little hint!</p>
+
+<h2 id="id-selector-was-executed-automatically">id selector was executed automatically</h2>
+
+<p>For those elements with id property, a variable named same as the id property’s value could be called directly.
+For example:
+&lt;div id=”id1”…</p>
+
+<p>app.controller(‘ctrl’,function($scope){
+    id1……</p>
+
+<p>which work! </p>
+
 
   </article>
 

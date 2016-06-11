@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>关于</title>
-  <meta name="description" content="老程序员. 热爱编程，享受编程。
-">
+  <title>jQuery匿名函数事件处理器定位与调试</title>
+  <meta name="description" content="jQuery匿名函数事件处理器定位与调试==========================JavaScript调试的一个大问题就是：event handler的代码如何定位？">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://changdao.github.io/about/">
+  <link rel="canonical" href="http://changdao.github.io/jekyll/update/2016/06/12/debugjQuery.html">
   <link rel="alternate" type="application/rss+xml" title="长刀, 一个老程序员." href="http://changdao.github.io/feed.xml" />
 </head>
 
@@ -58,11 +57,40 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">关于</h1>
+    <h1 class="post-title">jQuery匿名函数事件处理器定位与调试</h1>
+    <p class="post-meta">Jun 12, 2016</p>
   </header>
 
   <article class="post-content">
-    <p>一个老程序员。学过用过很多技术，略有一些心得，现在还在学习。</p>
+    jQuery匿名函数事件处理器定位与调试
+==========================
+JavaScript调试的一个大问题就是：event handler的代码如何定位？
+
+比如在实现页面交互时，某个控件的事件处理有一些多余的动作或者不符合预期的的行为，如何知道这些行为是如何发生的？如果自己写全部的代码，没有用其它的框架也好办，但是这在现在的开发团队和过程中很少的。有时候页面JS在控制台打印出了堆栈，但是你只能看到和jQuery相关，而实际事件处理代码具体在哪里，却完全没有头绪。
+在实践中，我也经常遇到这种情况，处理办法是在Chrome中首先通过断点，然后定位到
+<pre>
+/*jquery.js 1.10.2 */
+5094  ret = ( (jQuery.event.special[ handleObj.origType ] || {}).handle || handleObj.handler ).apply( matched.elem, args );
+</pre>
+
+然后在控制台上键入下面的代码并回车。
+<pre>
+(jQuery.event.special[ handleObj.origType ] || {}).handle || handleObj.handler
+</pre>
+查看该表达式的值。
+
+通常，在控制台打印出来的是
+<pre>
+function anonymous(e)
+</pre>
+
+单击“anonymous”，Chrome就会定位到对应的JavaScript代码处。
+
+
+断点的设置很多时候都要特别设计，要考虑到不同事件的发生关系和处理次序。
+比如click事件的触发，首先是mouseDown，然后mouseUp，最后才click。因此，例如象click事件的跟踪，就要先通过Chrome的Event listner 断点栏设置 click 断点，当click事件发生，程序终端之后，再设置断点到代码对应位置，然后继续执行程序，中断在对应位置。如果不按照这个次序处理，mouseDown事件就会中断，就不会再捕获到click事件了。
+
+
 
   </article>
 

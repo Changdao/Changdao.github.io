@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>关于</title>
-  <meta name="description" content="老程序员. 热爱编程，享受编程。
-">
+  <title>Suggestions about NodeJS/AngularJS Web App</title>
+  <meta name="description" content="Use one AngularJS APPThat can contribute many benefits:">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://changdao.github.io/about/">
+  <link rel="canonical" href="http://changdao.github.io/jekyll/update/2015/05/31/AngularJS%E5%92%8CNodeJS%E7%9A%84%E4%B8%80%E4%BA%9B%E8%A7%82%E7%82%B9.html">
   <link rel="alternate" type="application/rss+xml" title="长刀, 一个老程序员." href="http://changdao.github.io/feed.xml" />
 </head>
 
@@ -58,11 +57,28 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">关于</h1>
+    <h1 class="post-title">Suggestions about NodeJS/AngularJS Web App</h1>
+    <p class="post-meta">May 31, 2015</p>
   </header>
 
   <article class="post-content">
-    <p>一个老程序员。学过用过很多技术，略有一些心得，现在还在学习。</p>
+    <h2 id="use-one-angularjs-app">Use one AngularJS APP</h2>
+<p>That can contribute many benefits:</p>
+
+<pre><code>1. PageState could be rememberred;
+2. Less files
+3. Easy to reuse existing code.
+</code></pre>
+
+<h2 id="rest-api-utilize-the-query">REST api utilize the Query</h2>
+<p>It’s suggested to design requests in such style:</p>
+
+<pre><code>GET /hotel?query=luxury&amp;page=3&amp;nPerPage=10
+</code></pre>
+
+<p>Then both your query code of AngularJS and Sequelize/Mongoose code in nodeJS will all be shorter.</p>
+
+<h2 id="to-be-continued">To be continued</h2>
 
   </article>
 

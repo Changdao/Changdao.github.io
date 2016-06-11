@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>关于</title>
-  <meta name="description" content="老程序员. 热爱编程，享受编程。
-">
+  <title>css备忘（编辑中）</title>
+  <meta name="description" content="CSS备忘Notice: Please do not fully trust the following record, I’m just recording it, if there are some conflict with others, maybe I’m wrong.">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://changdao.github.io/about/">
+  <link rel="canonical" href="http://changdao.github.io/jekyll/update/2015/06/10/%E6%9C%80%E7%AE%80CSS.html">
   <link rel="alternate" type="application/rss+xml" title="长刀, 一个老程序员." href="http://changdao.github.io/feed.xml" />
 </head>
 
@@ -58,11 +57,84 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">关于</h1>
+    <h1 class="post-title">css备忘（编辑中）</h1>
+    <p class="post-meta">Jun 10, 2015</p>
   </header>
 
   <article class="post-content">
-    <p>一个老程序员。学过用过很多技术，略有一些心得，现在还在学习。</p>
+    <h1 id="css">CSS备忘</h1>
+<p>Notice: Please do not fully trust the following record, I’m just recording it, if there are some conflict with others, maybe I’m wrong.</p>
+
+<h2 id="selectors">selectors</h2>
+
+<pre><code>1. '.selector' select for class, for example:
+   .card {
+      display:block;
+   }
+   which will affect:
+   &lt;div class="card" ...
+2. '#selector' select for id, for example:
+   #card {
+      display:block;
+   }
+   which will affect:
+   &lt;div id="card" ....
+3. '(non start with [. #]selector' seldct for tag, for example:
+   h1 {
+     ....
+   }
+   which will affect: 
+   &lt;h1&gt; Hi! &lt;/h1&gt;
+4. 'tagselector.selector' is for tag and class, for example:
+   h1.head-title {
+     ...
+   }
+   which will affect:
+   &lt;h1 class="head-title"&gt;
+5. 'selector selector' is for selector inside selector, for example:
+   div .head-title {
+     ...
+   }
+   which will affect:
+   &lt;div&gt;
+     &lt;span&gt;
+        &lt;strong class='head-title'&gt;...
+6. 'selector &gt; selector' is for element being direct child as element, for example:
+   div.head-title&gt;h1{
+   ....
+   }
+   which will affect:
+   &lt;div class="head-title"&gt;&lt;h1&gt;....
+7. 'selector, selector' is an OR operation, just group the policy, for example:
+   .head-title , .head-subtitle
+   {
+     ...
+   }
+   which will affect:
+   &lt;div class="head-title&gt;&lt;/div&gt;
+   and
+   &lt;div class=".head-subtitle&gt;&lt;/div&gt;
+8. @media
+   The @media rule is used to define different style rules for different media types/devices.
+   @media not|only mediatype and (media feature) {
+    CSS-Code;
+   } 
+   for example:
+   @media only screen and (max-width: 500px) {
+       .gridmenu {
+	   width:100%;
+       }
+
+       .gridmain {
+	    width:100%;
+       }
+
+       .gridright {
+	    width:100%;
+           }
+   }
+</code></pre>
+
 
   </article>
 
