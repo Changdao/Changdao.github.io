@@ -1,0 +1,24 @@
+JavaScript调试的一个大问题就是：event handler的代码如何定位？
+
+比如在实现页面交互时，某个控件的事件处理有一些多余的动作或者不符合预期的的行为，如何知道这些行为是如何发生的？如果自己写全部的代码，没有用其它的框架也好办，但是这在现在的开发团队和过程中很少的。某个页面元素的事件处理代码具体在哪里？在实际调试中如何发现？ 这里介绍一个我实际使用的方法。
+
+
+基于JQuery的事件处理，可以通过断点，然后定位到
+/*jquery.js 1.10.2 */
+5094  ret = ( (jQuery.event.special[ handleObj.origType ] || {}).handle || handleObj.handler )
+                            .apply( matched.elem, args );
+
+然后在console上查看
+(jQuery.event.special[ handleObj.origType ] || {}).handle || handleObj.handler
+
+
+通常是
+function anonymous(e)
+
+单击anonymous，chrome会定位到对应的JavaScript代码处。
+
+
+断点的设置很多时候都要特别设计，要考虑到不同事件的发生关系和处理次序。
+比如click事件的触发，首先是mouseDown，然后mouseUp，最后才click。因此，例如象click事件的跟踪，就要先通过Chrome的Event listner 断点栏设置 click 断点，当click事件发生，程序终端之后，再设置断点到代码对应位置，然后继续执行程序，中断在对应位置。如果不按照这个次序处理，mouseDown事件就会中断，就不会再捕获到click事件了。
+
+

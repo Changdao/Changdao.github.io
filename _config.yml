@@ -2,8 +2,8 @@
 title: Changdao, an old programmer. 
 email: jameslau@263.net
 description: > # this means to ignore newlines until "baseurl:"
-     I love and program for twenty years. I still love programming.
-     I love to share my opinions about programming.
+     A programmer.
+     Love it, enjoy it
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://changdao.github.io" # the base hostname & protocol for your site
 github_username: Changdao 
